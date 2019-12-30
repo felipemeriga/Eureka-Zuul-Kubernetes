@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300">
+
+    <text x="0" y="100" style="font-family: Arial;
+                 font-size  : 34;
+                 stroke     : #000000;
+                 fill       : #00ff00;
+                "
+    >
+        This is a static svg
+
+    </text>
+</svg>

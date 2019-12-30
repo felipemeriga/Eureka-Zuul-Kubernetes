@@ -1,0 +1,35 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: zuul-server
+spec:
+  selector:
+    app: zuul-server
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 9090
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zuul-server
+  labels:
+    app: zuul-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: zuul-server
+  template:
+    metadata:
+      labels:
+        app: zuul-server
+    spec:
+      containers:
+        - name: zuul-server
+          image: felipemeriga1/zuul-server:latest
+          ports:
+            - containerPort: 9090

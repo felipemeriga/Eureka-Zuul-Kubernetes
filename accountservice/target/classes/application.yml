@@ -1,0 +1,16 @@
+server:
+  port: 9092
+
+spring:
+  application:
+    name: account-service
+
+eureka:
+  instance:
+    preferIpAddress: true
+    hostname: account-service
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka,http://eureka-1.eureka.default.svc.cluster.local:8761/eureka,http://eureka-2.eureka.default.svc.cluster.local:8761/eureka

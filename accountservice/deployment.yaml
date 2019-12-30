@@ -1,0 +1,52 @@
+# This is the kubernetes file for the account-service
+# In the service section, as we want to keep this service accessible only inside the kubernetes cluster
+# we have the option of using the NodePort, or ClusterIP. Remember that if you use LoadBalancer in a eks cluster
+# a load balancer will be created in AWS, pointing to the node instances of the cluster, which means it will be externally reachable.
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: account-service
+spec:
+  selector:
+    app: account-service
+  type: NodePort
+  ports:
+    - nodePort: 30163
+      port: 80
+      targetPort: 9092
+
+#kind: Service
+#apiVersion: v1
+#metadata:
+#  name: account-service
+#spec:
+#  selector:
+#    app: account-service
+#  type: ClusterIP
+#  ports:
+#      port: 80
+#      targetPort: 9092
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: account-service
+  labels:
+    app: account-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: account-service
+  template:
+    metadata:
+      labels:
+        app: account-service
+    spec:
+      containers:
+        - name: account-service
+          image: felipemeriga1/account-service:latest
+          ports:
+            - containerPort: 9092
+

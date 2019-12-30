@@ -1,0 +1,12 @@
+server:
+  port: 8761
+
+eureka:
+  numberRegistrySyncRetries: 1
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    enableSelfPreservation: false
