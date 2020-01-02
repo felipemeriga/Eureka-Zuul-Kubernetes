@@ -1,0 +1,52 @@
+# This is the kubernetes file for the feign-service
+# In the service section, as we want to keep this service accessible only inside the kubernetes cluster
+# we have the option of using the NodePort, or ClusterIP. Remember that if you use LoadBalancer in a eks cluster
+# a load balancer will be created in AWS, pointing to the node instances of the cluster, which means it will be externally reachable.
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: feign-service
+spec:
+  selector:
+    app: feign-service
+  type: NodePort
+  ports:
+    - nodePort: 30164
+      port: 80
+      targetPort: 9091
+
+#kind: Service
+#apiVersion: v1
+#metadata:
+#  name: feign-service
+#spec:
+#  selector:
+#    app: feign-service
+#  type: ClusterIP
+#  ports:
+#      port: 80
+#      targetPort: 9091
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feign-service
+  labels:
+    app: feign-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: feign-service
+  template:
+    metadata:
+      labels:
+        app: feign-service
+    spec:
+      containers:
+        - name: feign-service
+          image: felipemeriga1/feign-service:latest
+          ports:
+            - containerPort: 9091
+

@@ -1,0 +1,55 @@
+server:
+  port: 9092
+
+# Metrics configuration for Spring Actuator and also prometheus, it's the same for all profiles
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, prometheus
+  metrics:
+    export:
+      atlas:
+        enabled: false
+
+# Remember that the name of the application has to be the same name of the registered service in the service discovery tool
+spring:
+  profiles:
+    active: "prod"
+  application:
+    name: account-service
+---
+
+spring:
+  profiles: dev
+eureka:
+  instance:
+    # Leave prefer ip address to allow the gateway inside the kubernetes cluster to find this service by it's pod ip
+    preferIpAddress: true
+    # The hostname of the service, to register the pod and turn it easier for the gateway to find it
+    hostname: account-service
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+---
+
+spring:
+  profiles: prod
+eureka:
+  instance:
+    # Leave prefer ip address to allow the gateway inside the kubernetes cluster to find this service by it's pod ip
+    preferIpAddress: true
+    # The hostname of the service, to register the pod and turn it easier for the gateway to find it
+    hostname: account-service
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka,http://eureka-1.eureka.default.svc.cluster.local:8761/eureka,http://eureka-2.eureka.default.svc.cluster.local:8761/eureka
+
+
+
+

@@ -1,3 +1,6 @@
 /Users/f.ramos.da.silva/GIT/spring-boot-eureka-zuul/zuul-server/src/main/java/org/exampledriven/zuul/filter/AccessLogFilter.java
+/Users/f.ramos.da.silva/GIT/spring-boot-eureka-zuul/zuul-server/src/main/java/org/exampledriven/zuul/filter/PreFilter.java
 /Users/f.ramos.da.silva/GIT/spring-boot-eureka-zuul/zuul-server/src/main/java/org/exampledriven/zuul/SpringCloudZuulExampleApplication.java
+/Users/f.ramos.da.silva/GIT/spring-boot-eureka-zuul/zuul-server/src/main/java/org/exampledriven/zuul/filter/ErrorFilter.java
+/Users/f.ramos.da.silva/GIT/spring-boot-eureka-zuul/zuul-server/src/main/java/org/exampledriven/zuul/filter/RouteFilter.java
 /Users/f.ramos.da.silva/GIT/spring-boot-eureka-zuul/zuul-server/src/main/java/org/exampledriven/zuul/filter/StaticFilter.java

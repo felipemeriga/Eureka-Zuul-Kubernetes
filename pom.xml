@@ -28,9 +28,9 @@
 	</dependencyManagement>
 
 	<modules>
-		<module>accountservice</module>
+		<module>account-service</module>
 		<module>eureka-server</module>
-		<module>nodeservice</module>
+		<module>feign-service</module>
 		<module>zuul-server</module>
 	</modules>
 
