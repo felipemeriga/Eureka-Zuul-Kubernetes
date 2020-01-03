@@ -51,7 +51,7 @@ kubectl apply -f deployment
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Running Attached Project :
+### Running project locally
 
 1.	Extract and you can find four maven projects 
 2.	Run all the project with mvn install -DskipTests
@@ -70,29 +70,29 @@ http://localhost:8761/
 * For security reasons you can set the service of the deployed microservices as NodePort or ClusterIP, instead of LoadBalancer, because we have our gateway that will handle the redirection to the services.
 
 ## Kubernetes Services diferences:
-* ClusterIP: It’s the default one, giving a service allowing another apps inside the cluster to access it.
-* NodePort: The node port opens an specific port in all the nodes (instances), and all the requests on those ports will be redirected to the service, which will redirect to the pods.
+* ***ClusterIP:*** It’s the default one, giving a service allowing another apps inside the cluster to access it.
+* ***NodePort:*** The node port opens an specific port in all the nodes (instances), and all the requests on those ports will be redirected to the service, which will redirect to the pods.
 
 ![alt test](images/nodeport.png)
 
 
-* LoadBalancer: It’s the most standard way of exposing a service to the internet. If you are using EKS cluster, when you create a LoadBalancer, this load balancer will be persisted in the AWS console, and it will distribute the traffic to the service, which will reach the pods.
+* ***LoadBalancer:*** It’s the most standard way of exposing a service to the internet. If you are using EKS cluster, when you create a LoadBalancer, this load balancer will be persisted in the AWS console, and it will distribute the traffic to the service, which will reach the pods.
 
 ![alt test](images/loadbalancer.png)
 
 Kubernetes has three Object Types you should know about:
-* Pods - runs one or more closely related containers
-* Services - sets up networking in a Kubernetes cluster
-* Deployment - Maintains a set of identical pods, ensuring that they have the correct config and that the right number of them exist.
-Pods:
-* Runs a single set of containers
-* Good for one-off dev purposes
-* Rarely used directly in production
-Deployment:
-* Runs a set of identical pods
-* Monitors the state of each pod, updating as necessary
-* Good for dev
-* Good for production
+* ***Pods:*** runs one or more closely related containers
+* ***Services:*** sets up networking in a Kubernetes cluster
+* ***Deployment:*** Maintains a set of identical pods, ensuring that they have the correct config and that the right number of them exist.
+* ***Pods:***
+    * Runs a single set of containers
+    * Good for one-off dev purposes
+    * Rarely used directly in production
+* ***Deployment:***
+    * Runs a set of identical pods
+    * Monitors the state of each pod, updating as necessary
+    * Good for dev
+    * Good for production
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Link followed for design :
